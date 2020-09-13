@@ -3,6 +3,7 @@ package io.keeplearning.bookcatalogservice.resources;
 import io.keeplearning.bookcatalogservice.model.Book;
 import io.keeplearning.bookcatalogservice.model.CatalogItem;
 import io.keeplearning.bookcatalogservice.model.Rating;
+import io.keeplearning.bookcatalogservice.model.UserRating;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,12 +29,9 @@ public class BookCatalogResource {
     @GetMapping("/{userId}")
     public List<CatalogItem> getCatalog(@PathVariable("userId") String userId) {
 
-        List<Rating> ratings = Arrays.asList(
-                new Rating("1234", 5),
-                new Rating("4567", 3)
-        );
+        UserRating userRating = restTemplate.getForObject("http://localhost:8083/ratings/users/"+userId, UserRating.class);
 
-        return ratings.stream().map(rating -> {
+        return userRating.getUserRatings().stream().map(rating -> {
             //Book book = restTemplate.getForObject("http://localhost:8082/books/"+rating.getBookId(), Book.class);
 
             Book book = webClientBuilder.build()
