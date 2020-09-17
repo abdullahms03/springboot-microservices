@@ -29,14 +29,14 @@ public class BookCatalogResource {
     @GetMapping("/{userId}")
     public List<CatalogItem> getCatalog(@PathVariable("userId") String userId) {
 
-        UserRating userRating = restTemplate.getForObject("http://localhost:8083/ratings/users/"+userId, UserRating.class);
+        UserRating userRating = restTemplate.getForObject("http://ratings-data-service/ratings/users/"+userId, UserRating.class);
 
         return userRating.getUserRatings().stream().map(rating -> {
             //Book book = restTemplate.getForObject("http://localhost:8082/books/"+rating.getBookId(), Book.class);
 
             Book book = webClientBuilder.build()
                     .get()
-                    .uri("http://localhost:8082/books/"+rating.getBookId())
+                    .uri("http://book-info-service/books/"+rating.getBookId())
                     .retrieve()
                     .bodyToMono(Book.class)
                     .block();
