@@ -2,7 +2,6 @@ package io.keeplearning.bookcatalogservice.resources;
 
 import io.keeplearning.bookcatalogservice.model.Book;
 import io.keeplearning.bookcatalogservice.model.CatalogItem;
-import io.keeplearning.bookcatalogservice.model.Rating;
 import io.keeplearning.bookcatalogservice.model.UserRating;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,7 +39,7 @@ public class BookCatalogResource {
                     .bodyToMono(Book.class)
                     .block();
 
-            return new CatalogItem(book.getName(), "Interview", rating.getRating());
+            return new CatalogItem(book.getName(), book.getDescription(), rating.getRating());
         })
                 .collect(Collectors.toList());
     }
