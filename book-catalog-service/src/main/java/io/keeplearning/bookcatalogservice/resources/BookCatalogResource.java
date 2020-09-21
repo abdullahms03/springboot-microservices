@@ -30,14 +30,14 @@ public class BookCatalogResource {
         UserRating userRating = restTemplate.getForObject("http://ratings-data-service/ratings/users/"+userId, UserRating.class);
 
         return userRating.getUserRatings().stream().map(rating -> {
-            //Book book = restTemplate.getForObject("http://localhost:8082/books/"+rating.getBookId(), Book.class);
+            Book book = restTemplate.getForObject("http://book-info-service/books/"+rating.getBookId(), Book.class);
 
-            Book book = webClientBuilder.build()
+            /*Book book = webClientBuilder.build()
                     .get()
                     .uri("http://book-info-service/books/"+rating.getBookId())
                     .retrieve()
                     .bodyToMono(Book.class)
-                    .block();
+                    .block();*/
 
             return new CatalogItem(book.getName(), book.getDescription(), rating.getRating());
         })
