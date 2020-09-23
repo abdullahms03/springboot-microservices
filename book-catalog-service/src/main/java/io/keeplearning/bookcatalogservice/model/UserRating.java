@@ -4,6 +4,13 @@ import java.util.List;
 
 public class UserRating {
 
+    public UserRating() {
+    }
+
+    public UserRating(List<Rating> userRatings) {
+        this.userRatings = userRatings;
+    }
+
     public List<Rating> getUserRatings() {
         return userRatings;
     }
