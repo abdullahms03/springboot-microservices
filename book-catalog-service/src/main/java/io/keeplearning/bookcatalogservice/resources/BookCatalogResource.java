@@ -1,9 +1,7 @@
 package io.keeplearning.bookcatalogservice.resources;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import io.keeplearning.bookcatalogservice.model.Book;
 import io.keeplearning.bookcatalogservice.model.CatalogItem;
-import io.keeplearning.bookcatalogservice.model.Rating;
 import io.keeplearning.bookcatalogservice.model.UserRating;
 import io.keeplearning.bookcatalogservice.service.BookInfoService;
 import io.keeplearning.bookcatalogservice.service.RatingInfoService;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
