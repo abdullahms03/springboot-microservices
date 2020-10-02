@@ -34,4 +34,13 @@ public class RatingInfoService {
                 )
         );
     }
+
+// bulkhead pattern
+    /*@HystrixCommand(fallbackMethod = "getFallbackUserRating",
+            threadPoolKey = "bookInfoPool",
+            threadPoolProperties = {
+                    @HystrixProperty(name = "coreSize", value = "20"),
+                    @HystrixProperty(name = "maxQueueSize", value = "10")
+            })*/
+
 }
