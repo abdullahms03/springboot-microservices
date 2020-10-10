@@ -1,0 +1,3 @@
+test:
+  props:
+    map: "{iOS: 'iPhone', Android: 'Samsung', Windows: 'Nokia'}"

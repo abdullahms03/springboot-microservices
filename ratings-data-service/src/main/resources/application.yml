@@ -7,3 +7,5 @@ test:
   props:
     list: iOS, Android, Windows
     map: "{iOS: 'Apple', Android: 'Google', Windows: 'Microsoft'}"
+
+spring.profiles.active: test
