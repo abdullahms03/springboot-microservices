@@ -9,3 +9,4 @@ test:
     map: "{iOS: 'Apple', Android: 'Google', Windows: 'Microsoft'}"
 
 spring.profiles.active: test
+
