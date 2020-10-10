@@ -1,12 +1,3 @@
-server.port: 8083
 spring.application.name: ratings-data-service
-eureka.client.serviceUrl.defaultZone: http://localhost:9000/eureka/
-
-test:
-  prop: OS
-  props:
-    list: iOS, Android, Windows
-    map: "{iOS: 'Apple', Android: 'Google', Windows: 'Microsoft'}"
 
 spring.profiles.active: test
-

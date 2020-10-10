@@ -1,5 +1,1 @@
-server.port: 9000
-eureka:
-    client.register-with-eureka: false
-    client.fetch-registry: false
-    client.serviceUrl.defaultZone: http://localhost:9000/eureka/
+spring.application.name: discovery-server
